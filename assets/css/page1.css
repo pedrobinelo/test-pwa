@@ -1,0 +1,201 @@
+/* Samsung LH75W */
+/* Background */
+body {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../img/home_photo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+main {
+    margin: 8rem auto;
+    padding: 6rem;
+}
+/* Voltar ao início */
+#back {
+    background-color: #0088B7;
+    color: #FFF;
+    padding: 2rem 5rem;
+    border-radius: 5rem;
+    font-weight: 700;
+    font-size: 3.5rem;
+    font-family: "Trebuchet MS", sans-serif;
+    box-shadow: 10px 10px black;
+    border: 3px solid black;
+}
+
+/* Conhecendo a Pré-História de Mato Grosso do Sul */
+#title {
+    text-align: center;
+}
+h1 {
+    color: #FFF;
+    font-size: 8rem;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+/* Descrição do quiz */
+#description {
+    text-align: center;
+}
+p {
+    color: #FFF;
+    font-size: 5rem;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: 500;
+    padding: 5rem;
+}
+
+/* Iniciar o quiz */
+.start-quiz {
+    text-align: center;
+}
+.start-quiz a {
+    text-decoration: none;
+}
+
+.start {
+    background-color: #0088B7;
+    color: #FFF;
+    padding: 3rem 5rem;
+    border-radius: 5rem;
+    font-weight: 700;
+    box-shadow: 15px 15px black;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 5.5rem;
+}
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+    body {
+        object-fit: fill;
+    }
+    main {
+        margin: 0 auto;
+        padding: 2rem 4rem 1rem 4rem;
+    }
+    /* Voltar ao início */
+    .back-button {
+        padding: 4rem 0 0 0;
+    }
+    .back-button a {
+        text-decoration: none;
+    }
+    #back {
+        font-size: 1rem;
+        box-shadow: 2px 1px black;
+        padding: 1rem;
+        border-radius: 1.5rem;
+        border: 2px solid black;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    /* Conhecendo a Pré-História de Mato Grosso do Sul */
+    h1 {
+        font-size: 2rem;
+    }
+    
+    /* Descrição do quiz */
+    p {
+        font-size: 1.25rem;
+        padding: 0.5rem;
+    }
+    
+    /* Iniciar o quiz */
+    .start {
+        box-shadow: 7px 3px black;
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        border-radius: 1.5rem;
+        border: 2px solid black;
+    }
+}
+/* Tablet */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    body {
+        object-fit: fill;
+    }
+    main {
+        margin: 7rem auto;
+        padding: 2rem 6rem 4rem 6rem;
+    }
+    /* Voltar ao início */
+    .back-button {
+        padding: 4rem 0 0 0;
+    }
+    .back-button a {
+        text-decoration: none;
+    }
+    #back {
+        font-size: 1.5rem;
+        box-shadow: 2px 1px black;
+        padding: 1rem 2rem;
+        border-radius: 1.5rem;
+        border: 2px solid black;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    /* Conhecendo a Pré-História de Mato Grosso do Sul */
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Descrição do quiz */
+    p {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+    
+    /* Iniciar o quiz */
+    .start-quiz {
+        padding: 3rem 0;
+    }
+    .start {
+        box-shadow: 7px 3px black;
+        font-size: 2rem;
+        padding: 1rem 2rem;
+        border-radius: 1.5rem;
+        border: 2px solid black;
+    }
+}
+/* Desktop */
+@media only screen and (min-width: 1025px) and (max-width: 1300px) {
+    main {
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+    /* Voltar ao início */
+    #back {
+        padding: 1rem 2rem;
+        border-radius: 3rem;
+        font-size: 1rem;
+        box-shadow: 4px 4px black;
+    }
+    
+    /* Conhecendo a Pré-História de Mato Grosso do Sul */
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    /* Descrição do quiz */
+    p {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+    
+    /* Iniciar o quiz */
+    .start {
+        padding: 1rem 2rem;
+        border-radius: 3rem;
+        box-shadow: 4px 4px black;
+        font-size: 1.25rem;
+        border: 3px solid black;
+    }
+
+}
+

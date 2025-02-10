@@ -1,0 +1,24 @@
+{
+    "name": "History of MS",
+    "short_name": "MS Story",
+    "start_url": "index.html",
+    "display": "standalone",
+    "description": "Conhecendo a pré-história do Mato Grosso do Sul",
+    "lang": "pt-BR",
+    "dir": "auto",
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "orientation": "any",
+    "icons": [
+      {
+        "src": "assets/img/museu_icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "assets/img/museu_icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
