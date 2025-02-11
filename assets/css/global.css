@@ -16,13 +16,15 @@ body {
     /* Fonte Futura XBlkCn BT */
     @font-face {
         font-family: "Futura XBlkCn BT";
-        src: url('/assets/fonts/futura.ttf') format('truetype');
+        src: url('../../futura.woff') format('woff'),
+             url('../../futura.ttf') format('truetype');
     }
 
     /* Fonte Swis721 Cn BT (Tipografia de apoio) */
     @font-face {
         font-family: "Swis721 Cn BT";
-        src: url('/assets/fonts/swiss.ttf') format('truetype');
+        src: url('../../swiss.woff') format('woff'),
+             url('../../swiss.ttf') format('truetype');
     }
 
 /* Botão de voltar ao início */
@@ -36,11 +38,12 @@ body {
     /* Trebuchet MS */
     @font-face {
         font-family: "Trebuchet MS";
-        src: url('../fonts/trebuc.ttf') format('truetype');
+        src: url('../../trebuc.woff') format('woff'),
+             url('../../trebuc.ttf') format('truetype');
     }
 
 /* Desktop */
-@media only screen and (min-width: 768px) and (max-width: 1300px) {
+@media only screen and (min-width: 768px) and (max-width: 2000px) {
     /* Botão de voltar ao início */
     .back-button {
         padding: 1rem;
