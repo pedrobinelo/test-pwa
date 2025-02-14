@@ -121,7 +121,7 @@ const questionEl = document.getElementById("question");
 const imageContainer = document.getElementById("question-picture");
 const optionsEl = document.getElementById("options");
 const quizContainer = document.getElementById("quiz-container");
-const nextBtn = document.getElementById("next-btn");
+let nextBtn = document.getElementById("next-btn");
 const resultContainer = document.getElementById("result-container");
 const scoreEl = document.getElementById("score");
 const feedbackSound = document.getElementById("feedback-sound");
@@ -130,6 +130,12 @@ let selectedButton = null; // Armazena o botão selecionado atualmente
 let selectedAnswerIndex = null; // Índice da resposta escolhida
 
 function selectAnswer(selectedIndex) {
+    // Habilita o botão "Próxima"
+    const nextBtn = document.getElementById("next-btn");
+    if (nextBtn) {
+        nextBtn.style.display = "block";
+    }
+
     const buttons = document.querySelectorAll("#options button");
 
     // Se houver um botão previamente selecionado, remove o estilo
@@ -143,16 +149,15 @@ function selectAnswer(selectedIndex) {
     selectedButton = buttons[selectedIndex];
     selectedAnswerIndex = selectedIndex;
 
-    // Aplica o estilo de fundo verde e o texto branco
+    // Aplica o estilo de fundo cinza e o texto branco
     selectedButton.style.backgroundColor = "#808080";
     selectedButton.style.color = "#FFF";
     // selectedButton.style.transform = "scale(1.1)";
 
-    // Mostra o botão "Próximo"
-    nextBtn.style.display = "block";
 }
 
-function showQuestion() {
+
+function showQuestion() {    
     bodyEl.style = "";
     const currentQuestion = questions[currentQuestionIndex];
     questionEl.textContent = currentQuestion.question;
@@ -163,10 +168,8 @@ function showQuestion() {
     currentQuestion.options.forEach((option, index) => {
         const button = document.createElement("button");
         button.innerHTML = option;
-
         // Adiciona o evento de clique ao botão
         button.onclick = () => selectAnswer(index);
-
         optionsEl.appendChild(button);
     });
 
@@ -180,11 +183,42 @@ function showQuestion() {
     // Ajusta os tamanhos dos botões após inseri-los
     adjustButtonSizes();
 
-    // Oculta o botão "Próximo" no início de cada nova questão
-    nextBtn.style.display = "none";
+    // Cria e exibe o botão "Próxima" dinamicamente
+    const divNextQuestion = document.createElement("div");
+    divNextQuestion.className = "next-question";
+    const nextButton = document.createElement("button");
+    nextButton.id = "next-btn";
+    nextButton.textContent = "Próxima";
+
+    // Adicionando evento de clique ao botão
+    nextButton.onclick = function () {
+        nextQuestion();
+    };
+
+    // Adicionando o botão dentro da div
+    divNextQuestion.appendChild(nextButton);
+
+    // Adicionando a div ao corpo do documento (ou a outro elemento desejado)
+    document.body.appendChild(divNextQuestion);
+
+    // // Oculta o botão "Próximo" no início de cada nova questão
+    const nextBtn = document.getElementById("next-btn");
+    if (nextBtn) {
+        nextBtn.style.display = "none";
+    }
+
 }
 
+function isAnswered () {
+    // Desabilita todos os botões de resposta
+    const buttons = document.querySelectorAll("#options button");
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+
+}
 function nextQuestion() {
+    isAnswered();
     // Verifica se o índice da questão é válido
     if (selectedButton) {
         // Verifica se a resposta está correta
@@ -202,16 +236,26 @@ function nextQuestion() {
         selectedButton = null;
         selectedAnswerIndex = null;
 
+
          // Avança para a próxima questão após 4 segundos
          setTimeout(() => {
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
+                cleanNextButton();
                 showQuestion();
             } else {
                 bodyEl.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./assets/img/home_photo.png)";
                 endQuiz();
             }
         }, 2000);
+
+    }
+}
+
+function cleanNextButton() {
+    const nextBtnContainer = document.querySelector(".next-question");
+    if (nextBtnContainer) {
+        nextBtnContainer.remove();
     }
 }
 
@@ -241,7 +285,10 @@ function showFeedback(isCorrect, selectedButton, correctButton) {
 function endQuiz() {
     questionNumberEl.style.visibility = "hidden";
     quizContainer.style.display = "none";
-    nextBtn.style.display = "none";
+    const nextBtn = document.getElementById("next-btn");
+    if (nextBtn) {
+        nextBtn.style.display = "none";
+    }
     resultContainer.style.display = "flex";
     scoreEl.textContent = `Você acertou ${score} de ${questions.length} perguntas.`;
 }
