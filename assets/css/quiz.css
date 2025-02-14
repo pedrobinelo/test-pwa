@@ -101,22 +101,44 @@ body {
             color: white;
         }
               
-        /* Botão - próximo */
+        /* Botão - próxima */
         .next-question {
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 3rem;
+            padding: 1rem;
         }
         #next-btn {
             background-color: #0088B7;
             color: #FFF;
-            padding: 2rem 5rem;
+            padding: 2rem 4rem;
             border-radius: 3rem;
             font-weight: 700;
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-family: "Trebuchet MS", sans-serif;
             box-shadow: 10px 10px black;
+        }
+
+        .correct-answer::after {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-left: 5px;
+            background-image: url('../img/correct.png');
+        }
+
+        .wrong-answer::after {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-left: 5px;
+            background-image: url('../img/wrong.png');
         }
 
 /* Fim do quiz */
@@ -168,7 +190,7 @@ body {
             /* Pergunta */
             #question {
                 width: 70%;
-                font-size: 1.15rem;
+                font-size: 1rem;
             }
     
             /* Imagem da questão */
@@ -246,7 +268,7 @@ body {
         /* Pergunta */
         #question {
             width: 65%;
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
 
         /* Imagem da questão */
@@ -326,7 +348,7 @@ body {
         /* Pergunta */
         #question {
             width: 60%;
-            font-size: 1rem;
+            font-size: 0.8rem;
         }
 
         /* Imagem da questão */

@@ -33,12 +33,16 @@ self.addEventListener('install', event => {
             '/assets/img/13.jpg',
             '/assets/img/14.jpg',
             '/assets/img/15.png',
+            '/assets/img/correct.png',
+            '/assets/img/wrong.png',
             '/assets/img/logo_facom.svg',
             '/assets/img/logo-ufms.svg',
             '/assets/img/apple-icon-180.png',
             '/assets/img/museu_icon-192.png',
             '/assets/img/museu_icon-512.png',
             '/assets/img/Logo-museu.png',
+            '/assets/sounds/correct.mp3',
+            '/assets/sounds/wrong.wav',
             '/manifest.json'
         ]).catch(error => {
             console.error('Falha ao adicionar arquivos ao cache:', error);

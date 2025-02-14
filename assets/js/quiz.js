@@ -124,6 +124,7 @@ const quizContainer = document.getElementById("quiz-container");
 const nextBtn = document.getElementById("next-btn");
 const resultContainer = document.getElementById("result-container");
 const scoreEl = document.getElementById("score");
+const feedbackSound = document.getElementById("feedback-sound");
 
 let selectedButton = null; // Armazena o botão selecionado atualmente
 let selectedAnswerIndex = null; // Índice da resposta escolhida
@@ -143,9 +144,9 @@ function selectAnswer(selectedIndex) {
     selectedAnswerIndex = selectedIndex;
 
     // Aplica o estilo de fundo verde e o texto branco
-    selectedButton.style.backgroundColor = "#26a500";
+    selectedButton.style.backgroundColor = "#808080";
     selectedButton.style.color = "#FFF";
-    selectedButton.style.transform = "scale(1.1)";
+    // selectedButton.style.transform = "scale(1.1)";
 
     // Mostra o botão "Próximo"
     nextBtn.style.display = "block";
@@ -188,22 +189,52 @@ function nextQuestion() {
     if (selectedButton) {
         // Verifica se a resposta está correta
         const correctIndex = questions[currentQuestionIndex].correct;
-        if (selectedAnswerIndex === correctIndex) {
+        const isCorrect = selectedAnswerIndex === correctIndex;
+        const correctButton = document.querySelectorAll("#options button")[correctIndex];
+        
+        if (isCorrect) {
             score++; // Incrementa o score apenas aqui
         }
 
+        // Mostra o feedback
+        showFeedback(isCorrect, selectedButton, correctButton);
         // Reseta as variáveis de seleção
         selectedButton = null;
         selectedAnswerIndex = null;
 
-        // Avança para a próxima questão
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-            showQuestion();
-        } else {
-            bodyEl.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./assets/img/home_photo.png)";
-            endQuiz();
-        }
+         // Avança para a próxima questão após 4 segundos
+         setTimeout(() => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                bodyEl.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./assets/img/home_photo.png)";
+                endQuiz();
+            }
+        }, 2000);
+    }
+}
+
+function showFeedback(isCorrect, selectedButton, correctButton) {
+    if (isCorrect) {
+        feedbackSound.src = './assets/sounds/correct.mp3';
+        feedbackSound.play();
+        selectedButton.classList.add("correct-answer");
+        selectedButton.style.backgroundColor = "#139413";
+        selectedButton.style.color = "#FFF";
+        selectedButton.style.transform = "scale(1.1)";
+        selectedButton.style.filter = "brightness(1.2)";
+    } else {
+        feedbackSound.src = './assets/sounds/wrong.wav';
+        feedbackSound.play();
+        selectedButton.classList.add("wrong-answer");
+        selectedButton.style.backgroundColor = "#ae0808";
+        selectedButton.style.color = "#FFF";
+        correctButton.classList.add("correct-answer");
+        correctButton.style.backgroundColor = "#139413";
+        correctButton.style.color = "#FFF";
+        correctButton.style.transform = "scale(1.1)";
+        correctButton.style.filter = "brightness(1.2)";
     }
 }
 
